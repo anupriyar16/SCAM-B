@@ -1,0 +1,83 @@
+int isObstacle1=2;
+int isObstacle2=12;
+int x,y;
+int tha =0;
+void setup() {
+  // put your setup code here, to run once:
+pinMode(4,OUTPUT);
+pinMode(5,OUTPUT);
+pinMode(10,OUTPUT);
+pinMode(11,OUTPUT);
+pinMode(6,OUTPUT);
+pinMode(7,OUTPUT);
+pinMode(2,INPUT);
+pinMode(12,INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+x=digitalRead(2);
+y=digitalRead(12);
+if(y==LOW && x==LOW)
+{
+ forward();
+}
+else if(x==HIGH || y==HIGH)
+{
+  rturn();
+  delay(3500);
+  forward();
+  delay(7000);
+  lturn();
+  delay(3500);
+}
+}
+void forward()
+{
+digitalWrite(4,HIGH);
+digitalWrite(5,LOW);
+analogWrite(10,255);
+digitalWrite(6,LOW);
+digitalWrite(7,HIGH);
+analogWrite(11,255);
+}
+void backward()
+{
+  digitalWrite(4,LOW);
+  digitalWrite(5,HIGH);
+  analogWrite(10,255);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,LOW);
+  analogWrite(11,255);
+  
+}
+void stop()
+{
+  digitalWrite(4,LOW);
+  digitalWrite(5,LOW);
+  analogWrite(10,255);
+  digitalWrite(6,LOW);
+  digitalWrite(7,LOW);
+  analogWrite(11,LOW);
+}
+void lturn(){
+  digitalWrite(4,LOW);
+  digitalWrite(5,LOW);
+  analogWrite(10,255);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  analogWrite(11,255);
+  delay(5000);
+ 
+}
+void rturn()
+{
+  digitalWrite(4,HIGH);
+  digitalWrite(5,LOW);
+  analogWrite(10,255);
+  digitalWrite(6,LOW);
+  digitalWrite(7,LOW);
+  analogWrite(11,255);
+  delay(5000);
+}
+
